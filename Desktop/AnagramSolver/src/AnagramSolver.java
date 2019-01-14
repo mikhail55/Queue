@@ -1,45 +1,54 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AnagramSolver {
 
-    public AnagramSolver(){
+    ArrayList<String> dictionary;
 
-    }
-
-    private String rearrange(String input){
-        for (int i = 0; i< input.length() * )
+    public AnagramSolver(Scanner fileReader){
+        while(fileReader.nextLine() != null){
+            dictionary.add(fileReader.nextLine());
+        }
     }
 
     public boolean check(String input){
-
+        iterate(input, input.length(), new char[input.length()], 0);
     }
 
-    private String search(String wordChecked){
-
-    }
-
-    private int variations(String word){
-        char currentLetter;
-        int repeatedLetters = 0;
-        for (int i = 0; i < word.length(); i++){
-
-            currentLetter = word.charAt(i);
-
-            for (int j = 0; j< word.length() - 1; j++){
-                if (j == i){
-
-                }else if (currentLetter == word.charAt(j)){
-                    repeatedLetters++;
-                }
-            }
-
+    public void search(String wordChecked, int first, int last){
+        if (first <= last){
+            return;
         }
 
-        for (int i = 0; i < word.length(); i++){
-
+        if (dictionary.get((first + last)/2).compareTo(wordChecked) < 0){
+            first = (first + last)/2 + 1;
+            search(wordChecked, first,last);
         }
-        int variations =
+        else if (dictionary.get((first + last)/2).compareTo(wordChecked) > 0){
+            last = (first + last)/2 - 1;
+            search(wordChecked, first,last);
+        } else {
+            System.out.println(wordChecked);
+        }
 
     }
+
+    //Source: https://stackoverflow.com/questions/5504008/all-possible-words
+    public static void iterate(String word, int len, char[] build, int pos) {
+        if (pos == len) {
+            String newWord = new String(build);
+
+            // do what you need with each word here
+            return;
+        }
+
+        for (int i = 0; i < word.length(); i++) {
+            build[pos] = word.charAt(i);
+            iterate(word, len, build, pos + 1);
+        }
+    }
+
+
+
 
 }
