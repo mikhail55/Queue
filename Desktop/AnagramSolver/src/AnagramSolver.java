@@ -6,12 +6,22 @@ public class AnagramSolver {
     ArrayList<String> dictionary;
 
     public AnagramSolver(Scanner fileReader){
-        while(fileReader.nextLine() != null){
-            dictionary.add(fileReader.nextLine());
+        dictionary = new ArrayList<String>();
+        String lastLine = null;
+        while(lastLine != "End of the dictionary"){
+            try{
+
+            lastLine = fileReader.nextLine();
+                dictionary.add(lastLine);
+            } catch ("")
+
+
         }
     }
 
-    public boolean check(String input){
+    public void check(Scanner inputReader){
+        System.out.println("Enter an anagram: ");
+        String input = inputReader.nextLine();
         iterate(input, input.length(), new char[input.length()], 0);
     }
 
@@ -28,16 +38,16 @@ public class AnagramSolver {
             last = (first + last)/2 - 1;
             search(wordChecked, first,last);
         } else {
-            System.out.println(wordChecked);
+            System.out.println("Found word: " + wordChecked);
         }
 
     }
 
     //Source: https://stackoverflow.com/questions/5504008/all-possible-words
-    public static void iterate(String word, int len, char[] build, int pos) {
+    private void iterate(String word, int len, char[] build, int pos) {
         if (pos == len) {
             String newWord = new String(build);
-
+            search(newWord, 0, dictionary.size());
             // do what you need with each word here
             return;
         }

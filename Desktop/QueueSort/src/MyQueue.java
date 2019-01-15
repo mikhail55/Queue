@@ -59,17 +59,17 @@ public class MyQueue<E> {
      */
     public void sort(){
         for (int i = 0; i < size; i++){
-            E biggestNum = remove();
+            E smallestNum = remove();
             for (int j = 0; j < size; j++) {
                 E nextNum = remove();
-                if ((Integer)biggestNum < (Integer) nextNum){
-                    add(biggestNum);
-                    biggestNum = nextNum;
+                if ((Integer)smallestNum > (Integer) nextNum){
+                    add(smallestNum);
+                    smallestNum = nextNum;
                 } else {
                     add(nextNum);
                 }
             }
-            add(biggestNum);
+            add(smallestNum);
         }
     }
 

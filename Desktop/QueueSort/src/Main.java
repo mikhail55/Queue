@@ -2,10 +2,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Is ");
         MyQueue<Integer> testQueue = new MyQueue<>();
-//        Random rand = new Random();
-//        for (int i = rand)
 
         testQueue.add(5);
         testQueue.add(4);
