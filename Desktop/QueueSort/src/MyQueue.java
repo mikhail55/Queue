@@ -7,16 +7,16 @@
  */
 public class MyQueue<E> {
     private int size;
-    private MyNode head;
-    private MyNode tail;
+    private MyNode head; //first node
+    private MyNode tail; //last node
 
     public MyQueue(){
         size = 0;
     }
 
     /**
-     * This method is used to add any object of set type to the queue
-     * @param obj
+     * This method is used to add any object of set type to the queue to the end of it
+     * @param obj element that will be added to the queue
      */
     public void add(E obj){
         MyNode newNode = new MyNode(obj);
@@ -31,6 +31,10 @@ public class MyQueue<E> {
         size++;
     }
 
+    /**
+     * This method is used to remove and return the next element from the queue
+     * @return returns the next element just removed from the queue
+     */
     public E remove(){
         if (size > 0) {
 
@@ -46,23 +50,30 @@ public class MyQueue<E> {
             return null;
     }
 
+    /**
+     * Just returns the element of the queue without removing it
+     * @return returns the next element in the queue
+     */
     public E peek(){
         return head.getData();
     }
 
+    /**
+     * Returns the size of the queue
+     * @return int representing the size of the queue
+     */
     public int size() {
         return size;
     }
 
-    /**
-     *
+    /**This method sorts the queue in order from big to small
      */
     public void sort(){
         for (int i = 0; i < size; i++){
-            E smallestNum = remove();
+            E smallestNum = remove(); //assumes that the next number is the smallest
             for (int j = 0; j < size; j++) {
                 E nextNum = remove();
-                if ((Integer)smallestNum > (Integer) nextNum){
+                if ((Integer)smallestNum > (Integer) nextNum){ //compares the next number with the assumed smallest
                     add(smallestNum);
                     smallestNum = nextNum;
                 } else {
@@ -73,6 +84,10 @@ public class MyQueue<E> {
         }
     }
 
+    /**
+     * Prints the queue in order
+     * @return String returns a String representing the queue in order from big to small
+     */
     @Override
     public String toString() {
         MyNode currentNode = head;
@@ -86,10 +101,13 @@ public class MyQueue<E> {
         return queue.toString();
     }
 
+    /**
+     * This class is used to store data and create a structure for the queue
+     */
     private class MyNode{
         E data;
         MyNode nextNode;
-        boolean isSorted;
+
 
         MyNode(E data) {
             this.data = data;

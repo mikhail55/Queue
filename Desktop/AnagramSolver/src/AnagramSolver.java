@@ -13,7 +13,10 @@ public class AnagramSolver {
 
             lastLine = fileReader.nextLine();
                 dictionary.add(lastLine);
-            } catch ("")
+            } catch (java.util.NoSuchElementException e){
+                System.err.println("No line present");
+                return;
+            }
 
 
         }

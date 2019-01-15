@@ -15,6 +15,7 @@ public class Main {
 
         System.out.println(testQueue);
 
+        //Creates a random queue to test the algorithm
         MyQueue<Integer> testQueue2 = new MyQueue<>();
         Random rand = new Random();
         for (int i = 0; i < rand.nextInt(10) + 7; i++){
